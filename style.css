@@ -99,7 +99,7 @@ body {
 .cuisine-filter-main {
     display: flex;
     flex-direction: column;
-    background-color: #f0f0f0;
+    background-color: white;
     padding: 0.5rem 8.7rem 0.5rem 0.2rem;
     border-radius: 0 0 6px 0;
     height: 85vh;
@@ -270,6 +270,129 @@ body {
     font-size: 0.8rem;
 }
 
+
+
+/* CSS for the detailedRecipe.html */
+.detailed-main {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin: 1rem;
+}
+
+.imgdetails-container {
+    max-height: fit-content;
+    background-color: white;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    width: 24rem;
+    margin-bottom: 0.5rem;
+    box-shadow: 0 5px 9px rgba(112, 112, 112, 0.253);
+}
+
+.recipe-image {
+    height: 15rem;
+    margin: 1rem;
+    margin-bottom: 0;
+    border-radius: 5px;
+    box-shadow: 0 5px 9px rgba(0, 0, 0, 0.279);
+}
+
+.time-container {
+    margin-top: 0;
+    margin: 1rem;
+    display: flex;
+    background-color: #ff8a14;
+    padding: 0.1rem;
+    border-radius: 4px;
+    width: auto;
+    align-items: center;
+}
+
+.recipeTitle{
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    margin: 1rem;
+    display: flex;
+    justify-content: center;
+    color: white;
+    margin-bottom: 1.5rem;
+}
+
+.time-container{
+    display: flex;
+    justify-content: space-between;
+    max-height: 2rem;
+    align-items: center;
+    gap: 0.15rem;
+    font-size: 1rem;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+.cuisine{
+    font-size: medium;
+}
+
+.ingrediants-container, .instructions-container {
+    border-radius: 6px;
+    padding: 0.5rem;
+    background-color: black;
+    display: flex;
+    flex-direction: column;
+    width: 24rem;
+    text-align: justify;
+    margin: 0rem;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    box-shadow: 0 5px 9px rgba(255, 255, 255, 0.655);
+    margin-bottom: 0.5rem;
+    color: var(--text-primary-color);
+}
+
+.instructions-container{
+    margin-bottom: 1.5rem;
+    width: auto;
+}
+
+.ingrediants-container{
+    width: 18rem;
+}
+
+.ingrediants{
+    background-color: white;
+    width: 100%;
+    color: black;
+    padding: 0.4rem;
+    border-radius: 6px;
+}
+
+h2 {
+    margin-bottom: 0.5rem;
+}
+
+p {
+    font-size: small; /* Adjust font size as needed */
+}
+
+
+@keyframes fireAnimation {
+    0% { color: #ff4500; }
+    25% { color: #ff8c00; }
+    50% { color: #ffac33; }
+    75% { color: #ff4500; }
+    100% { color: #ff8c00; }
+}
+
+.heading-2 {
+    font-size: 2rem;
+    text-align: center;
+    animation: fireAnimation 2s infinite;
+    margin-left: auto;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
+
+
+
 /* Media query for smaller screens */
 @media screen and (max-width: 740px) {
     .main {
@@ -338,5 +461,22 @@ body {
         padding: 0.1rem 0.3rem;
         font-size: small;
         gap: 0.4rem;
+    }
+
+    .detailed-main {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1rem;
+        justify-content: center;
+    }
+
+    .ingrediants-container, .instructions-container {
+        padding: 0.5rem;
+        width: 24rem;
+    }
+
+    .heading-2{
+        margin-left: auto;
+        font-size: medium;
     }
 }

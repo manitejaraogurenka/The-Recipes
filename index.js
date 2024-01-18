@@ -100,10 +100,21 @@ const debounce = (callback, delay) => {
     };
 };
 
+function singleRecipe(event){
+    const cuisineId = event.target.id;
+    console.log(cuisineId);
+    if (cuisineId) {
+        localStorage.clear();
+        localStorage.setItem("id", cuisineId);
+        window.open("detailedRecipe.html", "_blank");
+    }
+}
+
 const debounceInput = debounce(handleSearch, 500);
 inputSearch.addEventListener("keyup", debounceInput);
 categoryButtons.forEach(button=>button.addEventListener("click", handleSearch));
 cuisineCardContainer.addEventListener("click", handleSearch);
+container.addEventListener("click", singleRecipe);
 
 //pagination
 function renderPagination() {

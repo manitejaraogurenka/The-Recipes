@@ -10,6 +10,7 @@ export function createCard(recipe, createElement) {
     image.classList.add("image");
     image.setAttribute("src", recipe["image-url"]);
     image.setAttribute("alt", "recipe image");
+    image.setAttribute("id", recipe.id);
 
     imageContainer.appendChild(image);
 
