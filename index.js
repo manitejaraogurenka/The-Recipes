@@ -1,12 +1,16 @@
 import { recipeData } from "./recipeData.js";
 import {createCard} from "./getRecipeCard.js"
+import {getCuisineCard} from "./getCuisine.js";
+import {cuisineData} from "./cuisineData.js";
 
-const nonVegItems = ['Duck', 'quail', 'Rabbit', 'Goose', 'squide', 'Octopus', 'Caviar', 'Lamb', 'Chicken', 'Mutton', 'Fish', 'Beef', 'Pork', 'Turkey', 'Shrimp', 'Crab', 'Lobster', 'Salmon', 'Tuna', 'Sausages', 'Bacon', 'Ham', 'Venison', 'Quail'];
+
+const nonVegItems = ['Duck', 'quail', 'Rabbit', 'Goose', 'squide', 'Octopus', 'Caviar', 'Lamb', 'Chicken', 'Mutton', 'Fish', 'Beef', 'Pork', 'Turkey', 'Shrimp', 'Crab', 'Lobster', 'Salmon', 'Tuna', 'Sausages', 'Bacon', 'Venison', 'Quail', 'Prawn'];
 
 const inputSearch = document.querySelector("#search");
+const container = document.querySelector('.main');
 const paginationList = document.getElementById('pagination-list');
-
 const categoryButtons = document.querySelectorAll(".category-button");
+const cuisineCardContainer = document.querySelector(".cuisine-filter-main");
 
 document.getElementById('currentYear').textContent = new Date().getFullYear();
 
@@ -17,14 +21,14 @@ let filteredRecipes = recipeData;
 const createElement = (element) => document.createElement(element);
 
 function creatCard(recipes, startIndex, endIndex) {
-    const container = document.querySelector('.main');
     container.innerHTML = '';
-
     for (let i = startIndex; i < endIndex && i < recipes.length; i++) {
         const cardContainer = createCard(recipes[i], createElement);
         container.appendChild(cardContainer);
     }
 }
+
+getCuisineCard(cuisineData, cuisineCardContainer, createElement);
 
 function filterRecipesByProperty(recipe, property, searchValue) {
     return recipe[property].toLowerCase().includes(searchValue);
@@ -46,7 +50,7 @@ function handleSearch(event) {
 
     if (vegOrNonVeg === 'nonveg') {
         filteredRecipes = filteredRecipes.filter(recipe =>
-            ['TranslatedRecipeName', 'TranslatedIngredients', 'Cuisine', 'TranslatedInstructions'].some(property =>
+            ['TranslatedRecipeName', 'TranslatedIngredients'].some(property =>
                 nonVegItems.some(item =>
                     recipe[property].toLowerCase().includes(item.toLowerCase())
                 )
@@ -56,7 +60,7 @@ function handleSearch(event) {
     
     if (vegOrNonVeg === 'veg') {
         filteredRecipes = filteredRecipes.filter(recipe =>
-            ['TranslatedRecipeName', 'TranslatedIngredients', 'Cuisine', 'TranslatedInstructions'].every(property =>
+            ['TranslatedRecipeName', 'TranslatedIngredients'].every(property =>
                 nonVegItems.every(item =>
                     !recipe[property].toLowerCase().includes(item.toLowerCase())
                 )
@@ -81,6 +85,7 @@ const debounce = (callback, delay) => {
 const debounceInput = debounce(handleSearch, 500);
 inputSearch.addEventListener("keyup", debounceInput);
 categoryButtons.forEach(button=>button.addEventListener("click", handleSearch));
+
 
 //pagination
 
