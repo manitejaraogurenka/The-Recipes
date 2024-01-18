@@ -1,10 +1,11 @@
-import { recipeData } from "./recipeData.js";
+import { recipeData } from "./Databases/recipeData.js";
 import {createCard} from "./getRecipeCard.js"
 import {getCuisineCard} from "./getCuisine.js";
-import {cuisineData} from "./cuisineData.js";
+import {cuisineData} from "./Databases/cuisineData.js";
 
 
 const nonVegItems = ['Duck', 'quail', 'Rabbit', 'Goose', 'squide', 'Octopus', 'Caviar', 'Lamb', 'Chicken', 'Mutton', 'Fish', 'Beef', 'Pork', 'Turkey', 'Shrimp', 'Crab', 'Lobster', 'Salmon', 'Tuna', 'Sausages', 'Bacon', 'Venison', 'Quail', 'Prawn'];
+let arrayOfSelectedCuisines = [];
 
 const inputSearch = document.querySelector("#search");
 const container = document.querySelector('.main');
@@ -38,6 +39,15 @@ function handleSearch(event) {
     const searchValue = inputSearch.value.toLowerCase();
     const vegOrNonVeg = event.target.textContent;
 
+    const id = event.target.dataset.id;
+    const isSelected = event.target.checked;
+
+    const selectedCuisine = cuisineData.reduce((acc, cur) => {
+    if (String(cur.id) === String(acc)) {return cur.Cuisine;}return acc;}, id);
+
+    arrayOfSelectedCuisines = isSelected ? [...arrayOfSelectedCuisines, selectedCuisine]
+    : arrayOfSelectedCuisines.filter(cuisine => cuisine !== selectedCuisine);
+
     filteredRecipes = recipeData;
 
     if (searchValue) {
@@ -67,6 +77,14 @@ function handleSearch(event) {
             )
         );
     }
+
+    if (arrayOfSelectedCuisines.length > 0) {
+        filteredRecipes = filteredRecipes.filter(recipe =>
+            arrayOfSelectedCuisines.some(item =>
+                recipe['Cuisine']===item
+            )
+        );
+    }    
     
     currentPage = 1; // Reset to the first page when searching
     updatePagination();
@@ -85,10 +103,9 @@ const debounce = (callback, delay) => {
 const debounceInput = debounce(handleSearch, 500);
 inputSearch.addEventListener("keyup", debounceInput);
 categoryButtons.forEach(button=>button.addEventListener("click", handleSearch));
-
+cuisineCardContainer.addEventListener("click", handleSearch);
 
 //pagination
-
 function renderPagination() {
     const totalPages = Math.ceil(filteredRecipes.length / itemsPerPage);
     paginationList.innerHTML = '';
