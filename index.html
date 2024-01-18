@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+    <link rel="shortcut icon" href="./images/Favicon.png" type="image/x-icon">
+    <title>Recipe App</title>
+</head>
+<body>
+    <header class="header">
+        <a href="index.html" class="heading-1"><h1>The Recipes</h1></a>
+        <div class="search-container">
+            <img draggable="false" src="images/search-icon.svg" alt="search icon" class="search-icon">
+            <input type="text" id="search" autocomplete="off" placeholder="Search a Recipe!">
+        </div>
+        <div class="category-buttons">
+            <button class="category-button veg" id="veg">veg</button>
+            <button class="category-button non-veg" id="nonveg">non</br>veg</button>
+        </div>
+    </header>
+    <main class="main"></main>
+    <div class="pagination">
+        <ul id="pagination-list"></ul>
+    </div>
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="social-links">
+                <a href="https://www.instagram.com/Manitejarao.gurenka" target="_blank"><i class="fab fa-instagram"></i></a>
+                <a href="https://www.x.com/gurenkamaniteja" target="_blank"><i class="fab fa-twitter"></i></a>
+                <a href="https://www.linkedin.com/in/manitejaraogurenka" target="_blank"><i class="fab fa-linkedin"></i></a>
+                <a href="https://www.youtube.com/@manitejaraogurenka" target="_blank"><i class="fab fa-youtube"></i></a>
+                <a href="https://github.com/ManitejaraoGurenka" target="_blank"><i class="fab fa-github"></i></a>
+            </div>
+            <div class="copyright">
+                &copy; <span id="currentYear"></span> Manitejaraogurenka.  All rights reserved.
+            </div>
+        </div>
+    </footer>
+    <script type="module" src="index.js"></script>
+</body>
+</html> 
