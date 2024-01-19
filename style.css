@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Nabla&family=Rubik+Doodle+Shadow&display=swap');
+
 * {
     padding: 0;
     margin: 0;
@@ -36,6 +38,7 @@ body {
     font-size: large;
     text-decoration: none;
     color: var(--text-primary-color);
+    animation: fireAnimation 2s infinite;
 }
 
 .heading-1:hover{
@@ -289,6 +292,7 @@ body {
     width: 24rem;
     margin-bottom: 0.5rem;
     box-shadow: 0 5px 9px rgba(112, 112, 112, 0.253);
+    height: fit-content;
 }
 
 .recipe-image {
@@ -350,11 +354,12 @@ body {
 
 .instructions-container{
     margin-bottom: 1.5rem;
-    width: auto;
+    width: 28rem;
 }
 
 .ingrediants-container{
-    width: 18rem;
+    width: 17rem;
+    height: fit-content;
 }
 
 .ingrediants{
@@ -387,7 +392,8 @@ p {
     text-align: center;
     animation: fireAnimation 2s infinite;
     margin-left: auto;
-    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-family: 'Nabla', system-ui;
+    font-family: 'Rubik Doodle Shadow', system-ui;
 }
 
 

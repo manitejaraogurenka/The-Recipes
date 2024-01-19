@@ -55,7 +55,7 @@ function createDetailedMain(recipe) {
 
     const titleElement1 = document.createElement("h2");
     titleElement1.classList.add("ingrediants");
-    titleElement1.textContent = `Ingredients(${recipe["Ingredient-count"]}):`;
+    titleElement1.textContent = `${recipe["Ingredient-count"]} Ingredients:`;
 
     const ingredientsElement1 = document.createElement("p");
     ingredientsElement1.classList.add("ingredients");
